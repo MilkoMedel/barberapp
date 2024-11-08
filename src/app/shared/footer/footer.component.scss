@@ -1,0 +1,47 @@
+.footer {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  .footer-content {
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #333;
+    }
+  }
+
+  .card {
+    display: flex;
+    justify-content: center; // Centramos los iconos
+    gap: 1rem; // Espacio entre los íconos
+    margin-top: 1rem;
+  }
+
+  .social-link1, .social-link2, .social-link3, .social-link4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: 0.25s;
+
+    // Agregar estilos de color a cada enlace de ícono
+    &.social-link1 { background: linear-gradient(45deg, #f09433, #bc1888); }
+    &.social-link2 { background-color: #00ccff; }
+    &.social-link3 { background-color: #5865f2; }
+    &.social-link4 { background-color: #12a50b; }
+
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}

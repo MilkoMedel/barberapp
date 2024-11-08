@@ -2,12 +2,25 @@
   <ion-toolbar>
     <ion-title>recovery</ion-title>
   </ion-toolbar>
+  <app-header></app-header>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">recovery</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="recovery-container">
+    <h2>Recupera tu contraseña</h2>
+    <p>Ingresa tu correo electrónico para enviarte un enlace de recuperación a tu correo personal.</p>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input type="email" placeholder="email@dominio.com"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="submit-button">Recuperar contraseña</ion-button>
+
+    <div class="back-to-login">
+      <ion-text>¿Ya tienes cuenta?</ion-text>
+      <ion-button fill="clear" routerLink="/login" class="login-button">Iniciar Sesión</ion-button>
+    </div>
+  </div>
+  <app-footer></app-footer>
 </ion-content>
