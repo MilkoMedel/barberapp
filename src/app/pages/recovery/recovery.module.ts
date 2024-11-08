@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { RecoveryPageRoutingModule } from './recovery-routing.module';
 
 import { RecoveryPage } from './recovery.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RecoveryPageRoutingModule
+    RecoveryPageRoutingModule,
+    SharedModule
   ],
   declarations: [RecoveryPage]
 })
