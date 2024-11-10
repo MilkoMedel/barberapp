@@ -1,13 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="ion-padding">
+  <app-header></app-header>
+  <ion-card class="form-container">
+    <!-- Título -->
+    <ion-card-header class="title-container">
+      <ion-card-title class="title">Ingresa a tu cuenta</ion-card-title>
+    </ion-card-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Campo de Email -->
+    <ion-item class="input-container">
+      <ion-icon slot="start" name="mail-outline"></ion-icon>
+      <ion-input label="Email" label-placement="floating" type="email" id="email-field"></ion-input>
+    </ion-item>
+
+    <!-- Campo de Password -->
+    <ion-item class="input-container">
+      <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
+      <ion-input label="Contraseña" label-placement="floating" type="password" id="password-field"></ion-input>
+    </ion-item>
+
+    <!-- Botón de Sign In -->
+    <ion-button expand="block" type="submit" class="sign-in-btn">
+      <span>Inrgesar</span>
+    </ion-button>
+  </ion-card>
 </ion-content>
