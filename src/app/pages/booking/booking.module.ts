@@ -1,3 +1,4 @@
+import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { BookingPage } from './booking.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    BookingPageRoutingModule
+    BookingPageRoutingModule,
+    SharedModule
   ],
   declarations: [BookingPage]
 })

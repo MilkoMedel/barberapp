@@ -15,7 +15,8 @@ import { RouterLink } from '@angular/router';
   imports: [
     CommonModule,
     RouterLink,
-    IonicModule
+    IonicModule,
+    RouterLink
   ],exports:[
     FooterComponent,
     HeaderComponent
