@@ -1,4 +1,4 @@
-<ion-content class="ion-padding">
+<ion-content>
   <app-header></app-header>
   <ion-card class="form-container">
     <!-- Título -->
@@ -20,7 +20,17 @@
 
     <!-- Botón de Sign In -->
     <ion-button expand="block" type="submit" class="sign-in-btn">
-      <span>Inrgesar</span>
+      <span>Ingresar</span>
     </ion-button>
+
+    <div class="enlaces">
+      <div class="recovery">
+        <h6>¿Olvidaste tu contraseña? <a routerLink="/recovery">Click aqui.</a></h6>
+      </div>
+      <div class="registrarse">
+        <h6>¿Aun no tienes cuenta? <a routerLink="/sign-up">Registrate.</a></h6>
+      </div>
+    </div>
   </ion-card>
+  <app-footer></app-footer>
 </ion-content>
