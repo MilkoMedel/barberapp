@@ -1,7 +1,116 @@
-<ion-content>
+<ion-content class="ion-padding">
   <app-header></app-header>
-  <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic error, placeat inventore libero eius laborum quasi nihil nulla? Ut corrupti incidunt facere. Veritatis expedita tenetur eius non quidem hic! Ad!
-  </p>
+
+  <!-- Bienvenida -->
+  <div class="welcome-message">
+    <h2>¡Bienvenido a BarberApp!</h2>
+    <p>Reserva tu próximo corte</p>
+  </div>
+
+  <!-- Servicios -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Servicios Populares</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button expand="block" color="secondary">Corte de Pelo $10.000</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" color="secondary">Corte de Pelo + Barba $15.000</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-button expand="block" color="secondary">Paquete Completo $25.000</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Promociones -->
+  <ion-card>
+    <ion-card-content class="promo">
+      <h3>Promoción: 10% de descuento en el primer corte</h3>
+      <p>¡Aprovecha esta oferta por tiempo limitado!</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Galería de Cortes de Cabello -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Estilos de Corte de Cabello</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <!-- Imagen 1 -->
+          <ion-col size="12">
+            <ion-card (click)="toggleCardExpansion(1)"
+                      [ngClass]="{'expanded-card': expandedCard === 1}">
+              <img src="assets/img/corte_1_hom.jpg" alt="Corte moderno" class="fixed-image" />
+              <ion-card-content *ngIf="expandedCard === 1" class="details">
+                <p>Detalles del corte moderno, perfecto para un look fresco y estilizado.</p>
+                <p>Precio: $15.000</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <!-- Imagen 2 -->
+
+          <ion-col size="12">
+            <ion-card (click)="toggleCardExpansion(2)"
+                      [ngClass]="{'expanded-card': expandedCard === 2}">
+              <img src="assets/img/corte_2_hom.jpg" alt="Corte clásico" class="fixed-image" />
+              <ion-card-content *ngIf="expandedCard === 2" class="details">
+                <p>Un corte clásico que nunca pasa de moda.</p>
+                <p>Precio: $10.000</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <!-- Imagen 3 -->
+
+          <ion-col size="12">
+            <ion-card (click)="toggleCardExpansion(3)"
+                      [ngClass]="{'expanded-card': expandedCard === 3}">
+              <img src="assets/img/corte_3_hom.jpg" alt="Corte moderno" class="fixed-image" />
+              <ion-card-content *ngIf="expandedCard === 3" class="details">
+                <p>Detalles del Fade Bajo, perfecto para un look fresco y estilizado.</p>
+                <p>Precio: $15.000</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <!-- Imagen 4 -->
+
+          <ion-col size="12">
+            <ion-card (click)="toggleCardExpansion(4)"
+                      [ngClass]="{'expanded-card': expandedCard === 4}">
+              <img src="assets/img/corte_1_mujer.jpg" alt="Corte clásico" class="fixed-image" />
+              <ion-card-content *ngIf="expandedCard === 4" class="details">
+                <p>Detalle de Pompadour, un look lindo y clasico.</p>
+                <p>Precio: $10.000</p>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Próximas Reservas -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Reservar Ahora</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button routerLink="/booking" expand="block" color="primary">Nueva Reserva</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Footer -->
   <app-footer></app-footer>
 </ion-content>
+
