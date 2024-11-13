@@ -1,0 +1,89 @@
+/* Contenedor principal con padding */
+ion-content {
+  padding: 20px ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo de la tarjeta de pago */
+.payment-card {
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo del título */
+.center-text {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+/* Contenedor para los botones de radio (uno al lado del otro) */
+.radio-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  justify-items: end;
+}
+
+/* Estilo para cada item de radio */
+.radio-item {
+  display: flex;
+  justify-content: space-between;
+  width: 48%; /* Ajustamos el ancho para que no ocupen todo el espacio */
+  margin-bottom: 10px;
+}
+
+/* Estilo del botón de "Pagar en Efectivo" */
+ion-button {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 1.1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+  background-color: #3880ff; /* Color primario de Ionic */
+  color: white;
+  transition: background-color 0.3s ease;
+  /* Aseguramos que no haya sombra interna ni bordes adicionales */
+  --box-shadow: none; /* Elimina sombra interna */
+  --border-width: 0px; /* Elimina cualquier borde */
+  --border-radius: 25%; /* Mantén el borde redondeado */
+}
+
+/* Efecto hover para el botón */
+ion-button:hover {
+  background-color: #3171e0;
+}
+
+/* Estilo adicional para cuando el botón está deshabilitado */
+ion-button[disabled] {
+  background-color: #d3d3d3;
+  color: #9e9e9e;
+  cursor: pointer;
+}
+
+/* Asegura que los elementos dentro del header y content tienen espaciado adecuado */
+ion-card-header, ion-card-content {
+  padding: 10px;
+}
+
+/* Estilo para el footer (asegurando que no interfiera con la card) */
+app-footer {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+}
