@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>payment</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <app-header></app-header>
+  <ion-card class="payment-card">
+    <ion-card-header>
+      <ion-card-title class="center-text">Seleccione medio de pago</ion-card-title>
+    </ion-card-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">payment</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-card-content>
+      <ion-radio-group [(ngModel)]="selectedPaymentMethod" (ionChange)="onPaymentMethodChange()">
+        <div class="radio-buttons-container">
+          <ion-item class="radio-item">
+            <ion-label>Crédito/Débito</ion-label>
+            <ion-radio value="card"></ion-radio>
+          </ion-item>
+          <ion-item class="radio-item">
+            <ion-label>Efectivo</ion-label>
+            <ion-radio value="cash"></ion-radio>
+          </ion-item>
+        </div>
+      </ion-radio-group>
+
+      <!-- Botón de pagar en efectivo (solo visible si se selecciona 'cash') -->
+      <ion-button
+        *ngIf="selectedPaymentMethod === 'cash'"
+        expand="full"
+        (click)="payCash()"
+        [disabled]="isPaymentButtonDisabled">
+        Pagar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  <app-footer></app-footer>
 </ion-content>
