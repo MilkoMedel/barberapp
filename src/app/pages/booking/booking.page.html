@@ -13,7 +13,7 @@
   <!-- Contenedor de botones -->
   <div class="button-container">
     <!-- Botón para confirmar la reserva -->
-    <ion-button id="confirm" expand="block" type="submit" (click)="confirmBooking()">
+    <ion-button id="confirm" expand="block" type="submit" (click)="confirmBooking()" [routerLink]="['/payment']">
       Confirmar reserva
     </ion-button>
 
