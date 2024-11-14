@@ -1,7 +1,38 @@
 <ion-content>
   <app-header></app-header>
-  <p>
-    booking
-  </p>
+  <p>booking</p>
+
+  <!-- Calendario -->
+  <ion-datetime
+    id="calendar"
+    presentation="calendar"
+    [(ngModel)]="datetime"
+    (ionChange)="onDateChange($event)">
+  </ion-datetime>
+
+  <!-- Contenedor de botones -->
+  <div class="button-container">
+    <!-- Botón para confirmar la reserva -->
+    <ion-button id="confirm" expand="block" type="submit" (click)="confirmBooking()">
+      Confirmar reserva
+    </ion-button>
+
+    <!-- Botón para ver las reservas del día seleccionado -->
+    <ion-button id="check" expand="block" type="button" (click)="viewReservations()">
+      Ver reservas
+    </ion-button>
+
+  </div>
+
+  <!-- Lista de reservas, visible solo si hay reservas -->
+  <div *ngIf="reservations.length > 0" class="reservation-list">
+    <h3>Reservas para {{ datetime | date: 'fullDate' }}</h3>
+    <ul>
+      <li *ngFor="let reservation of reservations">
+        {{ reservation.time }} - {{ reservation.details }}
+      </li>
+    </ul>
+  </div>
+
   <app-footer></app-footer>
 </ion-content>
