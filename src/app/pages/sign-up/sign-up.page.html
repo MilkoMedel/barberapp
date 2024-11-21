@@ -4,36 +4,36 @@
     <form (submit)="registerUser()">
       <!-- Título -->
       <ion-card-header class="title-container">
-        <ion-card-title class="title">Ingresa a tu cuenta</ion-card-title>
+        <ion-card-title class="title">Registra tus datos</ion-card-title>
       </ion-card-header>
 
       <!-- Campo de Nombre -->
       <ion-item class="input-container">
         <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-        <ion-input label="Nombre" label-placement="floating" id="name-field"></ion-input>
+        <ion-input [(ngModel)]="userData.name" name="name" label="Nombre" label-placement="floating" id="name-field"></ion-input>
       </ion-item>
 
       <!-- Campo de Apellido -->
       <ion-item class="input-container">
         <ion-icon slot="start" name="person-circle-outline"></ion-icon>
-        <ion-input label="Apellido" label-placement="floating" id="lastname-field"></ion-input>
+        <ion-input [(ngModel)]="userData.lastname" name="lastname" label="Apellido" label-placement="floating" id="lastname-field"></ion-input>
       </ion-item>
 
       <!-- Campo de Email -->
       <ion-item class="input-container">
         <ion-icon slot="start" name="mail-outline"></ion-icon>
-        <ion-input label="Email" label-placement="floating" type="email" id="email-field"></ion-input>
+        <ion-input [(ngModel)]="userData.email" name="email" label="Email" label-placement="floating" type="email" id="email-field"></ion-input>
       </ion-item>
 
       <!-- Campo de Password -->
       <ion-item class="input-container">
         <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
-        <ion-input label="Contraseña" label-placement="floating" type="password" id="password-field"></ion-input>
+        <ion-input [(ngModel)]="password" name="password" label="Contraseña" label-placement="floating" type="password" id="password-field"></ion-input>
       </ion-item>
 
       <!-- Botón de Sign In -->
       <ion-button expand="block" type="submit" class="sign-in-btn">
-        <span>Ingresar</span>
+        <span>Registrar</span>
       </ion-button>
       <div>
         <h6>¿Ya tienes cuenta? <a routerLink="/login">Inicia Sesion.</a></h6>
