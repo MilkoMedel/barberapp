@@ -44,4 +44,17 @@
       transform: scale(1.5);
     }
   }
+
+  .logOut{
+    margin-top: 15px;
+  }
+
+  .logOut a{
+    padding: 7px 10px;
+    margin: 10px 10px;
+    background-color: #494949;
+    color: #ddd;
+    text-decoration: none;
+    border-radius: 5px;
+  }
 }

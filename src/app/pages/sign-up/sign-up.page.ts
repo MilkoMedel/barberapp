@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/firebase/auth.service';
 import { FirestoreService } from 'src/app/firebase/firestore.service';
 import { User } from 'src/app/models/User.models';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,11 +18,14 @@ export class SignUpPage implements OnInit {
     email: ''
   };
 
-  error: string = '';
-
   password: string = '';
 
-  constructor(private authService: AuthService, private firestoreService: FirestoreService, private router: Router) {
+  error: string = '';
+
+  errorMessage: string = '';
+  successMessage: string = '';
+
+  constructor(private authService: AuthService, private firestoreService: FirestoreService, private router: Router, private alertController: AlertController) {
     this.error = '';
   }
 
@@ -40,12 +44,24 @@ export class SignUpPage implements OnInit {
 
         await this.firestoreService.createUser(uid,{name,lastname,email});
 
-        this.router.navigate(['/login']);
+        this.router.navigate(['/home']);
       }
     } catch(error){
       console.error('Error al registrar al usuario', error);
       this.error = this.authService.GenerarError(error);
+      this.errorMessage = 'Registre bien sus datos. Intentelo nuevamente.';
     }
+  }
+
+
+  async mostrarAlerta(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }

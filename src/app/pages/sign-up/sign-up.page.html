@@ -35,6 +35,9 @@
       <ion-button expand="block" type="submit" class="sign-in-btn">
         <span>Registrar</span>
       </ion-button>
+      <div *ngIf="errorMessage" class="errorRegistro">
+        {{errorMessage}}
+      </div>
       <div>
         <h6>¿Ya tienes cuenta? <a routerLink="/login">Inicia Sesion.</a></h6>
       </div>
