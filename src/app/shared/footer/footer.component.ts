@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/firebase/auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent  implements OnInit {
 
-  constructor() { }
+  isLogged = false;
 
-  ngOnInit() {}
+  constructor(private authService: AuthService) { }
 
+  ngOnInit() {
+    this.authService.authState$.subscribe((user) => {
+      this.isLogged = !!user; // Actualiza el estado dinámicamente
+    });
+  }
 }
