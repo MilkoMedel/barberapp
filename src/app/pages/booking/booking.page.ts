@@ -4,7 +4,6 @@ import { AuthService } from 'src/app/firebase/auth.service';
 import { Reservation } from 'src/app/models/Reservation.models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
-import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-booking',
@@ -17,9 +16,16 @@ export class BookingPage implements OnInit {
   numberReservation!: number;
   datetime: string | null = null;
 
+  // Propiedades nuevas
+  isSubmitting: boolean = false;
+  successMessage: string = '';
+  errorMessage: string = '';
+
   hours: string[] = [
     '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'
   ];
+
+  details: string[] =  ['corte $ 10.000','corte + barba $ 15.000', 'paquete completo $25.000'];
 
   reservationHours: Reservation[] = []; // Define el array de reservas
 
@@ -32,25 +38,28 @@ export class BookingPage implements OnInit {
     private alertController: AlertController,
   ) { }
 
-
-  ngOnInit() {this.reservationForm = this.fb.group({
-    fecha: ['', Validators.required],
-    hora: ['', Validators.required],
-    cantidad: ['', [Validators.required, Validators.min(1)]]
-  });}
+  ngOnInit() {
+    this.reservationForm = this.fb.group({
+      fecha: ['', Validators.required],
+      hora: ['', Validators.required],
+      detalle: ['', [Validators.required,]]
+    });
+  }
 
   // Método para confirmar y agregar una nueva reserva
+  async reservationHour() {
+    this.isSubmitting = true; // Activar el estado de "enviando"
 
-  async reservationHour(){
-    if(this.reservationForm.valid){
+    if (this.reservationForm.valid) {
       const getCurrentUser = this.AuthService.getCurrentUser();
-      if(!getCurrentUser) {
-        await this.viewAlert('Error','Para reservar una hora, debes iniciar sesión.');
+      if (!getCurrentUser) {
+        this.errorMessage = 'Para reservar una hora, debes iniciar sesión.';
+        this.isSubmitting = false;
         return;
       }
 
       const loading = await this.loadingController.create({
-        message: 'Loading...',
+        message: 'Guardando reserva...',
         spinner: 'circular',
       });
 
@@ -59,44 +68,44 @@ export class BookingPage implements OnInit {
         uid: getCurrentUser.uid,
         fecha: this.reservationForm.value.fecha,
         hora: this.reservationForm.value.hora,
+        detalle : this.reservationForm.value.detalle,
       };
+
       try {
+        // Guardar la reserva en Firestore
         await this.firestoreService.createReservation(reservation);
-        await this.viewAlert('Su reserva ha sido confirmada','Su hora ha sido reservada correctamente.');
+
+        this.successMessage = 'Su reserva ha sido guardada correctamente.';
         await loading.dismiss();
-        delay(4000);
-        this.nav.navigateRoot(['/home']);
+
+        // Redirigir a la vista de pago
+        this.nav.navigateForward(['/payment']);  // Redirigir al componente "Payment"
       } catch (error) {
-        await this.viewAlert('Error al reservar','Ha ocurrido un error, intente nuevamente.');
+        this.errorMessage = 'Ocurrió un error al guardar la reserva. Inténtelo nuevamente.';
         await loading.dismiss();
         console.error('Error al crear la reserva', error);
-        await this.viewAlert('Error al reserva','Ha ocurrido un error, intente nuevamente.');
         this.reservationForm.reset();
       }
+
+      this.isSubmitting = false; // Desactivar el estado de "enviando"
+    } else {
+      this.isSubmitting = false;
     }
   }
 
+
   async viewAlert(header: string, message: string) {
-      const alert = await this.alertController.create({
-        header,
-        message,
-        buttons: ['OK'],
-      });
-      await alert.present();
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 
   // Método para manejar cambios de fecha
   onDateChange(event: any) {
     const selectedDate = event.detail.value;
     this.datetime = selectedDate;
-  }
-  async mostrarAlerta(header: string, message: string) {
-    const alert = await this.alertController.create({
-      header,
-      message,
-      buttons: ['OK'],
-    });
-
-    await alert.present();
   }
 }

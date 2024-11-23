@@ -3,7 +3,7 @@
   <p>booking</p>
 
   <!-- Formulario para la reserva -->
-  <form (ngSubmit)="reservationHour()">
+  <form [formGroup]="reservationForm" (ngSubmit)="reservationHour()">
     <!-- Campo para seleccionar la fecha -->
     <ion-item>
       <ion-label position="floating">Fecha</ion-label>
@@ -11,8 +11,12 @@
         formControlName="fecha"
         [min]="today"
         display-format="DD MMM YYYY"
+        aria-label="Seleccionar fecha"
       ></ion-datetime>
     </ion-item>
+    <ion-text color="danger" *ngIf="reservationForm?.get('fecha')?.hasError('required')">
+      Seleccione una fecha.
+    </ion-text>
 
     <!-- Campo para seleccionar la hora -->
     <ion-item>
@@ -21,12 +25,32 @@
         <ion-select-option *ngFor="let hora of hours">{{ hora }}</ion-select-option>
       </ion-select>
     </ion-item>
+    <ion-text color="danger" *ngIf="reservationForm?.get('hora')?.hasError('required')">
 
+      Seleccione una hora.
+    </ion-text>
+
+    <!-- Campo para seleccionar el tipo de corte -->
+    <ion-item>
+      <ion-label>detalle</ion-label>
+      <ion-select formControlName="detalle">
+        <ion-select-option *ngFor="let detalle of details">{{ detalle }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-text color="danger" *ngIf="reservationForm?.get('detalle')?.hasError('required')">
+
+      Seleccione una hora.
+    </ion-text>
     <!-- Botón para reservar -->
-    <ion-button expand="block" type="submit" [disabled]="reservationForm.invalid">
+    <ion-button expand="block" type="submit" [disabled]="!reservationForm.valid || isSubmitting">
+      <ion-spinner *ngIf="isSubmitting"></ion-spinner>
       Reservar
     </ion-button>
   </form>
+
+  <!-- Mensajes de error o éxito -->
+  <ion-text color="success" *ngIf="successMessage">{{ successMessage }}</ion-text>
+  <ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>
 
   <app-footer></app-footer>
 </ion-content>

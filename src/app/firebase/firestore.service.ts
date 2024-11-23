@@ -16,11 +16,17 @@ export class FirestoreService {
     return setDoc(userDocRef, userData);
   }
 
-  async getUser(uid: string){
-    const userDocRef = doc(this.firestore, `users/${uid}`);
-    const userDoc = await getDoc(userDocRef);
-    return userDoc.exists() ? userDoc.data() : null;
+  async getUser(uid: string): Promise<User | null> {
+    try {
+      const userDocRef = doc(this.firestore, `users/${uid}`);
+      const userDoc = await getDoc(userDocRef);
+      return userDoc.exists() ? (userDoc.data() as User) : null;
+    } catch (error) {
+      console.error('Error al obtener el usuario:', error);
+      return null;
+    }
   }
+
 
   // Crear una nueva reserva
   async createReservation(reservation: Reservation) {
@@ -29,11 +35,11 @@ export class FirestoreService {
   }
 
   // Obtener reservas de un usuario por su UID
-  async getReservationsByUser(uid: string) {
+  async getReservationsByUser(uid: string): Promise<Reservation[]> {
     const reservationsCollectionRef = collection(this.firestore, 'reservations');
     const q = query(reservationsCollectionRef, where('uid', '==', uid));
     const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Reservation));
   }
 }
 
