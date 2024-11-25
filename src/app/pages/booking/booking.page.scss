@@ -1,20 +1,85 @@
+/* Estilos generales */
 ion-content {
+  --padding-start: 16px;
+  --padding-end: 16px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  justify-content: space-between;
+  background-color: #333333; /* Fondo claro */
 }
 
-button {
-  width: 45%; /* Ajusta el tamaño de los botones según lo necesites */
-  margin: 5px; /* Espacio entre los botones */
+/* Formulario */
+form {
+  margin: 0 auto;
+  padding: 16px;
+  background: #1f1f1f; /* Fondo blanco */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+  max-width: 500px;
 }
 
-.button-container {
-  display: flex;
-  justify-content: center; /* Centra los botones horizontalmente */
-  gap: 10px; /* Espacio entre los botones */
-  width: 100%; /* Se asegura de que la fila ocupe todo el ancho disponible */
-  margin-top: 20px; /* Espacio superior */
+/* Elementos del formulario */
+ion-item {
+  --inner-padding-top: 12px;
+  --inner-padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  background: #ffffff; /* Fondo claro */
+}
+
+/* Espaciado adicional para ion-label */
+ion-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333; /* Gris oscuro */
+  margin-bottom: auto; /* Espacio adicional debajo del título */
+  display: block; /* Asegura que el texto esté en una nueva línea */
+}
+
+ion-datetime {
+  margin-top: 30px; /* Espacio entre el título y el calendario */
+  font-size: 16px;
+  color: #ffffff;
+  width: 100%; /* Ajusta el tamaño al contenedor */
+}
+
+/* Botón de reserva */
+ion-button {
+  margin-top: 20px;
+  --background: #007bff; /* Azul primario */
+  --background-hover: #0056b3; /* Azul oscuro al pasar el mouse */
+  --color: #ffffff;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+ion-spinner {
+  margin-right: 8px;
+}
+
+/* Mensajes */
+ion-text {
+  display: block;
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Mensajes de éxito y error */
+ion-text[color='success'] {
+  color: #28a745; /* Verde */
+}
+
+ion-text[color='danger'] {
+  color: #dc3545; /* Rojo */
+}
+
+.title {
+  font-size: 24px; /* Tamaño grande para el título */
+  font-weight: 700; /* Negrita para destacar el título */
+  color: #ffffff; /* Color oscuro para buena visibilidad */
+  margin-bottom: 16px; /* Espacio debajo del título */
+  text-align: center; /* Centrar el título */
+  text-transform: uppercase; /* Convertir el texto a mayúsculas */
+  letter-spacing: 1px; /* Espaciado entre las letras para un toque moderno */
 }

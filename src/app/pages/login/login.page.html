@@ -18,7 +18,9 @@
         <ion-icon slot="start" name="lock-closed-outline"></ion-icon>
         <ion-input [(ngModel)]="password" name="password" label="Contraseña" label-placement="floating" type="password" id="password-field"></ion-input>
       </ion-item>
-
+      <div *ngIf="errorMessage" class="errorRegistro">
+        {{errorMessage}}
+      </div>
       <!-- Botón de Sign In -->
       <ion-button expand="block" type="submit" class="sign-in-btn">
         <span>Ingresar</span>

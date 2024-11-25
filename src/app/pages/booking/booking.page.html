@@ -1,6 +1,6 @@
 <ion-content>
   <app-header></app-header>
-  <p>booking</p>
+  <p class="title">Reserva</p>
 
   <!-- Formulario para la reserva -->
   <form [formGroup]="reservationForm" (ngSubmit)="reservationHour()">
@@ -26,7 +26,6 @@
       </ion-select>
     </ion-item>
     <ion-text color="danger" *ngIf="reservationForm?.get('hora')?.hasError('required')">
-
       Seleccione una hora.
     </ion-text>
 
@@ -38,8 +37,7 @@
       </ion-select>
     </ion-item>
     <ion-text color="danger" *ngIf="reservationForm?.get('detalle')?.hasError('required')">
-
-      Seleccione una hora.
+      Seleccione un detalle.
     </ion-text>
     <!-- Botón para reservar -->
     <ion-button expand="block" type="submit" [disabled]="!reservationForm.valid || isSubmitting">

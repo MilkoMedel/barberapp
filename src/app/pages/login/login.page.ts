@@ -12,12 +12,12 @@ export class LoginPage implements OnInit {
 
   email: string = '';
   password: string = '';
-
+  errorMessage: string = '';
   error: string = '';tring = '';
 
   constructor(private authService: AuthService, private firestoreService: FirestoreService, private router: Router) {
     this.error = '';
-   }
+  }
 
   ngOnInit():void {
     console.log('login-page');
@@ -41,6 +41,7 @@ export class LoginPage implements OnInit {
     }catch(error){
       console.error('Error al iniciar sesion');
       this.error = this.authService.GenerarError(error);
+      this.errorMessage = 'Ingrese bien sus datos. Intentelo nuevamente.';
     }
   }
 }
