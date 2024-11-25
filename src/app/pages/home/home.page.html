@@ -110,6 +110,16 @@
     </ion-card-content>
   </ion-card>
 
+  <!-- Ver reservas (solo si el usuario es empleado) -->
+  <ion-card *ngIf="showButton">
+    <ion-card-header>
+      <ion-card-title>Ver reservas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button routerLink="/employees" expand="block" color="primary">Ver Reservas</ion-button>
+    </ion-card-content>
+  </ion-card>
+
   <!-- Footer -->
   <app-footer></app-footer>
 </ion-content>
