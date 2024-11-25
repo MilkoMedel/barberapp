@@ -1,0 +1,38 @@
+/* Fondo negro */
+ion-content {
+  --background: #000000; /* Fondo negro */
+}
+
+/* Contenedor del mensaje */
+.message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; //centrado hz y ver
+}
+
+/* Estilo del mensaje */
+.logout-message {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 2px 2px 0px #000000;
+  border: 2px solid #000000;
+  padding: 15px 25px;
+  border-radius: 15px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Desplazamiento inicial */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Posición final */
+  }
+}
