@@ -41,5 +41,16 @@ export class FirestoreService {
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Reservation));
   }
+
+  // Obtener todas las reservas
+  async getAllReservations(): Promise<Reservation[]> {
+    const reservationsCollectionRef = collection(this.firestore, 'reservations');
+    const querySnapshot = await getDocs(reservationsCollectionRef);
+    // Mapea los datos y excluye el campo 'uid'
+    return querySnapshot.docs.map(doc => {
+      const { uid, ...rest } = doc.data(); // Excluir 'uid'
+      return { id: doc.id, ...rest } as Reservation;
+    });
+  }
 }
 

@@ -33,6 +33,8 @@ export class LoginPage implements OnInit {
 
       if(userCredential){
         this.router.navigate(['/home']);
+        this.email = '';
+        this.password = '';
       } else{
         console.error('No se ha iniciado sesion');
       }
